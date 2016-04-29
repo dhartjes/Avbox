@@ -1,0 +1,57 @@
+﻿@model Avbox.Models.AzureFileUploadViewModel
+
+@Styles.Render("~/Content/dropzone.css")
+@Styles.Render("~/Content/basic.css")
+@Styles.Render("~/Content/customDropzoneStyles.css")
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form action="~/Upload/SaveUploadedFile" class="dropzone" id="dropzoneForm" enctype="multipart/form-data" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AzureFileUploadViewModel</h4>
+        <hr />
+
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.FileName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FileName)
+                @Html.ValidationMessageFor(model => model.FileName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Recipient, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Recipient)
+                @Html.ValidationMessageFor(model => model.Recipient)
+            </div>
+        </div>
+
+        <div id="my-awesome-dropzone" class="dropzone">
+            <div class="dz-default dz-message"></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="submit" type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/dropzone.js")
+    @Scripts.Render("~/Scripts/customDropzoneBehavior.js")
+}

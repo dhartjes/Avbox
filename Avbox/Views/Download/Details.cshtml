@@ -1,0 +1,68 @@
+﻿@model Avbox.Models.AzureFileDownloadViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AzureFileInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+                @Html.DisplayNameFor(model => model.AzureUri)
+            </dt>*@
+
+        @*<dd>
+                @Html.DisplayFor(model => model.AzureUri)
+            </dd>*@
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Link)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Link)
+            </dd>*@
+
+        @if (!String.IsNullOrWhiteSpace(Model.Recipient)) {
+            <dt>
+                @Html.DisplayNameFor(model => model.Recipient)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Recipient)
+            </dd>
+        }
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.UploadDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UploadDate)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileSize)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Download File", "GetAzureFile",
+        new { directory = Model.Directory, azureId = Model.AzureId, recipient = Model.Recipient }) |
+    @Html.ActionLink("Back to home", "Index", "Home")
+</p>

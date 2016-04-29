@@ -1,0 +1,21 @@
+﻿@Styles.Render("~/Content/dropzone.css")
+@Styles.Render("~/Content/basic.css")
+@Styles.Render("~/Content/customDropzoneStyles.css")
+
+<form action="~/Controllers/UploadController/SaveUploadedFile" method="post" enctype="multipart/form-data" class="dropzone"
+      id="dropzoneForm" style="width: 850px; background: none; border: none;">
+    <div class="fallback">
+        <input name="file" type="file" multiple />
+        <input type="submit" value="Upload" />
+    </div>
+
+    <div id="my-awesome-dropzone" class="dropzone">
+        <div class="dz-default dz-message"></div>
+    </div>
+</form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/dropzone.js")
+    @Scripts.Render("~/Scripts/customDropzoneBehavior.js")
+}
